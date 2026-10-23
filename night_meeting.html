@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10/30(金) 夜MTG案内 - PISOLA吹田江坂店 | ほいコレナビ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ほいコレナビ ブランドカラー＆アクセント */
+            --hoiko-orange: #ff6b4a;
+            --hoiko-orange-grad: linear-gradient(135deg, #ff7e5f 0%, #ff5252 100%);
+            --hoiko-bg: #fffbf7;
+            --hoiko-card-bg: #ffffff;
+            --hoiko-text: #333333;
+            --hoiko-subtext: #666666;
+            
+            /* チーム別カラー */
+            --team-irietty-bg: #f4fbf7;
+            --team-irietty-border: #81c784;
+
+            --team-uemuran-bg: #fffde7;
+            --team-uemuran-border: #ffd54f;
+
+            --team-olive-bg: #e0f7fa;
+            --team-olive-border: #4dd0e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--hoiko-bg);
+            color: var(--hoiko-text);
+            line-height: 1.6;
+            padding: 20px 12px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: var(--hoiko-orange-grad);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(255, 82, 82, 0.25);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: "HOIKU COLLECTION DIVISION";
+            position: absolute;
+            top: -10px;
+            right: -20px;
+            font-size: 2.2rem;
+            font-weight: 900;
+            opacity: 0.12;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .header-sub {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.25);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        /* カード汎用 */
+        .card {
+            background: var(--hoiko-card-bg);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ff5252;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px dashed #fce4ec;
+        }
+
+        /* 会場案内 */
+        .info-list {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+            font-size: 0.98rem;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .info-label {
+            font-weight: 700;
+            color: var(--hoiko-subtext);
+            min-width: 70px;
+        }
+        .info-value {
+            font-weight: 600;
+            color: #222;
+        }
+
+        /* Google Map CTAボタン */
+        .map-btn-wrap {
+            margin-top: 18px;
+            text-align: center;
+        }
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--hoiko-orange-grad);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 12px 28px;
+            border-radius: 50px;
+            box-shadow: 0 6px 18px rgba(255, 82, 82, 0.3);
+            transition: all 0.2s ease;
+        }
+        .map-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(255, 82, 82, 0.4);
+        }
+
+        /* チームグリッド */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .team-card {
+            border-radius: 16px;
+            padding: 18px;
+            border: 2px solid;
+            position: relative;
+        }
+        .team-card.irietty { background: var(--team-irietty-bg); border-color: var(--team-irietty-border); }
+        .team-card.uemuran { background: var(--team-uemuran-bg); border-color: var(--team-uemuran-border); }
+        .team-card.olive   { background: var(--team-olive-bg);   border-color: var(--team-olive-border); }
+
+        .team-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .team-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .team-icon {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+        .table-badge {
+            background-color: #ff5252;
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 3px 12px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(255, 82, 82, 0.3);
+        }
+        .team-leader {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .member-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .tag {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        /* 店内座席マップSVG */
+        .map-svg-container {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            border: 1px solid #f0f0f0;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        /* 注文リストテーブル */
+        .table-responsive {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 5px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            font-size: 0.92rem;
+        }
+        th {
+            background-color: #fff2f2;
+            color: #ff5252;
+            font-weight: 700;
+            border-bottom: 2px solid #ffe0e0;
+        }
+        td {
+            border-bottom: 1px solid #f2f2f2;
+            background-color: #fff;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .tbl-no {
+            text-align: center;
+            font-weight: 900;
+            color: #ff5252;
+            font-size: 1.1rem;
+            background-color: #fff9f9;
+            vertical-align: middle;
+            border-right: 1px solid #ffe0e0;
+        }
+        .person-name {
+            font-weight: 700;
+            color: #333;
+            white-space: nowrap;
+        }
+        .menu-item {
+            color: #444;
+        }
+
+        /* フッター・ロゴ */
+        .footer {
+            text-align: center;
+            padding: 30px 10px 15px;
+            margin-top: 10px;
+        }
+        .footer-logo {
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .copyright {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 600px) {
+            body { padding: 12px 8px; }
+            .card { padding: 16px; border-radius: 16px; }
+            .header h1 { font-size: 1.35rem; }
+            th, td { padding: 10px; font-size: 0.88rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-sub">ほいコレ事業部 夜MTG</div>
+        <h1>10/30(金) PISOLA 吹田江坂店<br>懇親ミーティングのご案内</h1>
+    </header>
+
+    <!-- 会場・日時案内 -->
+    <section class="card">
+        <h2 class="section-title">📍 イベント概要・アクセス</h2>
+        <ul class="info-list">
+            <li class="info-item">
+                <span class="info-label">日時</span>
+                <span class="info-value">10月30日(金) 19:00 開始</span>
+            </li>
+            <li class="info-item">
+                <span class="info-label">会場</span>
+                <span class="info-value">PISOLA（ピソラ）吹田江坂店</span>
+            </li>
+            <li class="info-item">
+                <span class="info-label">住所</span>
+                <span class="info-value">〒564-0051 大阪府吹田市豊津町56-10</span>
+            </li>
+            <li class="info-item">
+                <span class="info-label">TEL</span>
+                <span class="info-value">06-6836-7020</span>
+            </li>
+        </ul>
+
+        <div class="map-btn-wrap">
+            <a href="https://www.google.com/maps/search/?api=1&query=PISOLA+%E5%90%B9%E7%94%B0%E6%B1%9F%E5%9D%82%E5%BA%97" target="_blank" rel="noopener noreferrer" class="map-btn">
+                <span>🗺️ Google Maps でルートを開く</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- チーム編成 & 卓番 -->
+    <section class="card">
+        <h2 class="section-title">グループ編成 & 卓番</h2>
+        <div class="team-grid">
+            <!-- 13卓 (パスタ) -->
+            <div class="team-card irietty">
+                <div class="team-header">
+                    <div class="team-title-wrap">
+                        <svg class="team-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="#FFE0B2"/>
+                            <ellipse cx="32" cy="36" rx="20" ry="11" fill="#FFB74D"/>
+                            <path d="M18 34 Q 32 22 46 34 Q 32 44 18 34 Z" fill="#E65100" opacity="0.25"/>
+                            <path d="M20 31 Q 28 22 36 30 Q 42 36 26 38" stroke="#FF6F00" stroke-width="3" stroke-linecap="round" fill="none"/>
+                            <path d="M25 26 Q 34 20 42 27" stroke="#F57C00" stroke-width="3" stroke-linecap="round" fill="none"/>
+                            <path d="M42 12 L42 22 M45 12 L45 22 M39 12 L39 22 M39 22 Q 42 26 45 22 M42 24 L42 45" stroke="#78909C" stroke-width="2.2" stroke-linecap="round"/>
+                        </svg>
+                        <span class="team-name">イリエッティ</span>
+                    </div>
+                    <span class="table-badge">13卓</span>
+                </div>
+                <div class="team-leader">リーダー：入江 主任</div>
+                <div class="member-tags">
+                    <span class="tag">田野</span>
+                    <span class="tag">菊嵜</span>
+                    <span class="tag">斉木</span>
+                </div>
+            </div>
+
+            <!-- 17卓 (トロフィー) -->
+            <div class="team-card uemuran">
+                <div class="team-header">
+                    <div class="team-title-wrap">
+                        <svg class="team-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="#FFF9C4"/>
+                            <path d="M20 18 H44 V32 C44 38.6 38.6 44 32 44 C25.4 44 20 38.6 20 32 V18 Z" fill="#FFCA28"/>
+                            <path d="M20 22 H14 C11.8 22 10 23.8 10 26 V30 C10 32.2 11.8 34 14 34 H20" stroke="#FFA000" stroke-width="3" fill="none"/>
+                            <path d="M44 22 H50 C52.2 22 54 23.8 54 26 V30 C54 32.2 52.2 34 50 34 H44" stroke="#FFA000" stroke-width="3" fill="none"/>
+                            <rect x="28" y="44" width="8" height="8" fill="#FFA000"/>
+                            <rect x="22" y="52" width="20" height="6" rx="2" fill="#795548"/>
+                            <path d="M32 21 L33.8 25.5 L38.5 25.5 L34.7 28.3 L36.2 33 L32 30 L27.8 33 L29.3 28.3 L25.5 25.5 L30.2 25.5 Z" fill="#FFF"/>
+                        </svg>
+                        <span class="team-name">ACウエムラン</span>
+                    </div>
+                    <span class="table-badge">17卓</span>
+                </div>
+                <div class="team-leader">リーダー：上村 部長</div>
+                <div class="member-tags">
+                    <span class="tag">中村</span>
+                    <span class="tag">佐藤</span>
+                    <span class="tag">杉本</span>
+                    <span class="tag">立花</span>
+                </div>
+            </div>
+
+            <!-- 51卓 (オリーブ) -->
+            <div class="team-card olive">
+                <div class="team-header">
+                    <div class="team-title-wrap">
+                        <svg class="team-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" fill="#E0F2F1"/>
+                            <!-- オリーブの実1 -->
+                            <ellipse cx="25" cy="37" rx="9" ry="13" transform="rotate(-15 25 37)" fill="#558B2F"/>
+                            <ellipse cx="23" cy="33" rx="3" ry="6" transform="rotate(-15 23 33)" fill="#9CCC65" opacity="0.7"/>
+                            <!-- オリーブの実2 -->
+                            <ellipse cx="39" cy="39" rx="8" ry="11" transform="rotate(20 39 39)" fill="#33691E"/>
+                            <ellipse cx="37" cy="36" rx="2.5" ry="5" transform="rotate(20 37 36)" fill="#8BC34A" opacity="0.7"/>
+                            <!-- 枝と葉っぱ -->
+                            <path d="M16 20 C 26 24, 34 26, 46 22" stroke="#4E342E" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M28 23 C 24 13, 34 11, 36 21 Z" fill="#689F38"/>
+                            <path d="M38 23 C 40 14, 50 15, 46 23 Z" fill="#689F38"/>
+                        </svg>
+                        <span class="team-name">ナカホリーブ</span>
+                    </div>
+                    <span class="table-badge">51卓</span>
+                </div>
+                <div class="team-leader">リーダー：中堀</div>
+                <div class="member-tags">
+                    <span class="tag">溝渕</span>
+                    <span class="tag">松本</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 店内マップ -->
+    <section class="card">
+        <h2 class="section-title">🗺️ 店内座席レイアウト</h2>
+        <div class="map-svg-container">
+            <svg viewBox="0 0 600 850" style="width: 100%; max-width: 460px; height: auto;" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- 橋の斜めハッチング -->
+                    <pattern id="bridgePattern" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                        <line x1="0" y1="0" x2="0" y2="10" stroke="#8fafe8" stroke-width="1.8" />
+                        <line x1="0" y1="0" x2="10" y2="0" stroke="#8fafe8" stroke-width="1.8" />
+                    </pattern>
+                    <!-- ピザ窯のドット -->
+                    <pattern id="pizzaPattern" width="4" height="4" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="0.8" fill="#666666" />
+                    </pattern>
+                </defs>
+
+                <!-- PISOLA ロゴ -->
+                <g id="logo">
+                    <text x="300" y="48" font-size="32" font-weight="900" fill="#1b4b72" text-anchor="middle" font-family="'Georgia', serif" letter-spacing="2">PISOLA</text>
+                    <path d="M 265 56 Q 282 63 300 56 T 335 56" fill="none" stroke="#1b4b72" stroke-width="2.5"/>
+                </g>
+
+                <!-- 店内全体外枠 -->
+                <rect x="50" y="75" width="500" height="740" fill="none" stroke="#222" stroke-width="2.5"/>
+
+                <!-- 1列目 (51番卓エリア) -->
+                <line x1="110" y1="75" x2="110" y2="740" stroke="#222" stroke-width="1.5"/>
+                <line x1="50" y1="360" x2="110" y2="360" stroke="#222" stroke-width="1.5"/>
+                <line x1="50" y1="450" x2="110" y2="450" stroke="#222" stroke-width="1.5"/>
+                <circle cx="80" cy="405" r="19" fill="#fff" stroke="#ff5252" stroke-width="2.5"/>
+                <text x="80" y="412" font-size="18" font-weight="900" fill="#ff5252" text-anchor="middle">51</text>
+
+                <!-- 左通路 (x: 110~200) -->
+                <line x1="200" y1="75" x2="200" y2="740" stroke="#222" stroke-width="1.5"/>
+                <text x="155" y="490" font-size="24" font-weight="bold" fill="#222" text-anchor="middle" writing-mode="vertical-rl" letter-spacing="12">通路</text>
+
+                <!-- 中央列 (橋 & 17・13番卓) (x: 200~330) -->
+                <line x1="330" y1="75" x2="330" y2="740" stroke="#222" stroke-width="1.5"/>
+                
+                <!-- 橋エリア -->
+                <line x1="200" y1="250" x2="330" y2="250" stroke="#222" stroke-width="1.5"/>
+                <line x1="200" y1="360" x2="330" y2="360" stroke="#222" stroke-width="1.5"/>
+                <!-- 上部網掛け -->
+                <rect x="200" y="250" width="130" height="30" fill="#d9e6f9"/>
+                <rect x="200" y="250" width="130" height="30" fill="url(#bridgePattern)" opacity="0.8"/>
+                <line x1="200" y1="280" x2="330" y2="280" stroke="#222" stroke-width="1.2"/>
+                <!-- 橋 テキスト -->
+                <rect x="200" y="280" width="130" height="40" fill="#ffffff"/>
+                <text x="265" y="308" font-size="22" font-weight="bold" fill="#222" text-anchor="middle">橋</text>
+                <!-- 下部網掛け -->
+                <line x1="200" y1="320" x2="330" y2="320" stroke="#222" stroke-width="1.2"/>
+                <rect x="200" y="320" width="130" height="40" fill="#d9e6f9"/>
+                <rect x="200" y="320" width="130" height="40" fill="url(#bridgePattern)" opacity="0.8"/>
+
+                <!-- 17番・13番卓 -->
+                <line x1="200" y1="450" x2="330" y2="450" stroke="#222" stroke-width="1.5"/>
+                <line x1="265" y1="360" x2="265" y2="450" stroke="#222" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <circle cx="232" cy="405" r="19" fill="#fff" stroke="#ff5252" stroke-width="2.5"/>
+                <text x="232" y="412" font-size="18" font-weight="900" fill="#ff5252" text-anchor="middle">17</text>
+                <circle cx="298" cy="405" r="19" fill="#fff" stroke="#ff5252" stroke-width="2.5"/>
+                <text x="298" y="412" font-size="18" font-weight="900" fill="#ff5252" text-anchor="middle">13</text>
+
+                <!-- 右通路 (x: 330~440) -->
+                <text x="385" y="510" font-size="24" font-weight="bold" fill="#222" text-anchor="middle" writing-mode="vertical-rl" letter-spacing="12">通路</text>
+
+                <!-- ドリンクバー -->
+                <rect x="420" y="240" width="45" height="120" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                <rect x="425" y="245" width="35" height="110" fill="#fff" stroke="#222" stroke-width="1"/>
+                <text x="442" y="300" font-size="13" font-weight="bold" fill="#222" text-anchor="middle" writing-mode="vertical-rl" letter-spacing="2">ドリンクバー</text>
+
+                <!-- レジ -->
+                <rect x="340" y="620" width="70" height="90" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                <text x="375" y="665" font-size="18" font-weight="bold" fill="#222" text-anchor="middle" writing-mode="vertical-rl" letter-spacing="4">レジ</text>
+
+                <!-- キッチン & ピザ窯 -->
+                <path d="M 465 75 L 550 75 L 550 540 L 430 540 L 430 380 L 465 380 Z" fill="none" stroke="#222" stroke-width="1.5"/>
+                <text x="495" y="200" font-size="22" font-weight="bold" fill="#222" text-anchor="middle" writing-mode="vertical-rl" letter-spacing="8">キッチン</text>
+
+                <!-- ピザ窯 (キッチン内部) -->
+                <circle cx="485" cy="455" r="50" fill="url(#pizzaPattern)" stroke="#222" stroke-width="1.5"/>
+                <circle cx="485" cy="455" r="50" fill="#ffffff" opacity="0.3"/>
+                <text x="485" y="462" font-size="18" font-weight="bold" fill="#222" text-anchor="middle">ピザ窯</text>
+
+                <!-- 風除室 -->
+                <line x1="300" y1="710" x2="550" y2="710" stroke="#222" stroke-width="1.5"/>
+                <line x1="300" y1="740" x2="300" y2="815" stroke="#222" stroke-width="1.5"/>
+                <!-- 扉アーチ -->
+                <path d="M 300 710 A 30 30 0 0 0 270 740" fill="none" stroke="#222" stroke-width="1.5"/>
+                <line x1="270" y1="740" x2="300" y2="740" stroke="#222" stroke-width="1.5"/>
+                <text x="430" y="780" font-size="24" font-weight="bold" fill="#222" text-anchor="middle">風除室</text>
+
+                <!-- 階段 -->
+                <line x1="50" y1="740" x2="270" y2="740" stroke="#222" stroke-width="1.5"/>
+                <line x1="80" y1="740" x2="80" y2="815" stroke="#222" stroke-width="1"/>
+                <line x1="110" y1="740" x2="110" y2="815" stroke="#222" stroke-width="1"/>
+                <line x1="140" y1="740" x2="140" y2="815" stroke="#222" stroke-width="1"/>
+                <line x1="170" y1="740" x2="170" y2="815" stroke="#222" stroke-width="1"/>
+                <line x1="200" y1="740" x2="200" y2="815" stroke="#222" stroke-width="1"/>
+                <line x1="230" y1="740" x2="230" y2="815" stroke="#222" stroke-width="1"/>
+                <!-- 矢印 -->
+                <line x1="70" y1="780" x2="245" y2="780" stroke="#222" stroke-width="1.8"/>
+                <path d="M 235 773 L 247 780 L 235 787" fill="none" stroke="#222" stroke-width="1.8"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 事前注文内容一覧 -->
+    <section class="card">
+        <h2 class="section-title">🍽️ 卓別 注文内容一覧</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 75px; text-align: center;">卓番</th>
+                        <th style="width: 110px;">氏名</th>
+                        <th>注文内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 13卓 -->
+                    <tr>
+                        <td class="tbl-no" rowspan="3">13卓</td>
+                        <td class="person-name">入江主任</td>
+                        <td class="menu-item">仔羊の串焼き</td>
+                    </tr>
+                    <tr>
+                        <td class="person-name">田野さん</td>
+                        <td class="menu-item">砂肝のペペロンチーノ</td>
+                    </tr>
+                    <tr>
+                        <td class="person-name">菊嵜さん</td>
+                        <td class="menu-item">窯焼きピザ：マルゲリータ</td>
+                    </tr>
+
+                    <!-- 17卓 -->
+                    <tr>
+                        <td class="tbl-no" rowspan="5">17卓</td>
+                        <td class="person-name">佐藤さん</td>
+                        <td class="menu-item">532ずわい蟹と海老の和風ソース、3840仔羊の串焼きローズマリーソルト添え（2本）</td>
+                    </tr>
+                    <tr>
+                        <td class="person-name">杉本さん</td>
+                        <td class="menu-item">3807 焼きたてチーズせんべい</td>
+                    </tr>
+                    <tr>
+                        <td class="person-name">立花さん</td>
+                        <td class="menu-item">貝柱ときゅうりのタルタル</td>
+                    </tr>
+                    <tr>
+                        <td class="person-name">中村さん</td>
+                        <td class="menu-item">3801グリーンサラダ・3832生ハムサラミ</td>
+
+                    </tr>
+                    <tr>
+                        <td class="person-name">上村部長</td>
+                        <td class="menu-item">ポテトフライ トリュフディップ添え</td>
+                    </tr>
+
+                    <!-- 51卓 -->
+                    <tr>
+                        <td class="tbl-no" rowspan="3">51卓</td>
+                        <td class="person-name">中堀さん</td>
+                        <td class="menu-item">明太子カルボナーラリゾット</td>
+                    </tr>
+                    <tr>
+                        <td class="person-name">溝渕さん</td>
+                        <td class="menu-item">ポテトサラダ</td>
+                    </tr>
+                    <tr>
+                        <td class="person-name">松本</td>
+                        <td class="menu-item">生ハムとサラミの盛り合わせ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- フッター (ほいコレ ロゴ) -->
+    <footer class="footer">
+        <img src="https://hoikucollection.jp/infomation/wp-content/uploads/2019/02/5fa8d7cdbc6e7052e84a871b680e6ae4.jpg" alt="ほいコレ" class="footer-logo">
+        <p class="copyright">&copy; HOIKO COLLECTION All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
