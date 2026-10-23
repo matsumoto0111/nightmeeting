@@ -126,22 +126,26 @@
             color: #222;
         }
 
-        /* Google Map CTAボタン */
+        /* Google Map / メニュー CTAボタン */
         .map-btn-wrap {
             margin-top: 18px;
             text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
         }
         .map-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             background: var(--hoiko-orange-grad);
             color: #ffffff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
-            padding: 12px 28px;
+            font-size: 0.95rem;
+            padding: 12px 24px;
             border-radius: 50px;
             box-shadow: 0 6px 18px rgba(255, 82, 82, 0.3);
             transition: all 0.2s ease;
@@ -150,8 +154,64 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 22px rgba(255, 82, 82, 0.4);
         }
+        .menu-btn {
+            background: linear-gradient(135deg, #26a69a 0%, #00897b 100%);
+            box-shadow: 0 6px 18px rgba(0, 137, 123, 0.3);
+        }
+        .menu-btn:hover {
+            box-shadow: 0 8px 22px rgba(0, 137, 123, 0.4);
+        }
 
-        /* チームグリッド */
+        /* 2カラムレイアウト（左：画像、右：文章） */
+        .media-layout {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+        .media-img-link {
+            flex: 0 0 160px;
+            max-width: 160px;
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .media-img-link:hover {
+            transform: scale(1.03);
+        }
+        .media-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        .media-body {
+            flex: 1;
+        }
+        .course-note {
+            margin-top: 8px;
+            font-size: 0.82rem;
+            color: #00796b;
+            font-weight: 700;
+            background: #e0f2f1;
+            padding: 6px 12px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        /* 画像スタイル汎用 */
+        .card-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        /* チームグリッド & カードアニメーション */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -162,7 +222,25 @@
             padding: 18px;
             border: 2px solid;
             position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .click-hint {
+            margin-top: 10px;
+            text-align: right;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #ff5252;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 4px;
+        }
+
         .team-card.irietty { background: var(--team-irietty-bg); border-color: var(--team-irietty-border); }
         .team-card.uemuran { background: var(--team-uemuran-bg); border-color: var(--team-uemuran-border); }
         .team-card.olive   { background: var(--team-olive-bg);   border-color: var(--team-olive-border); }
@@ -215,6 +293,240 @@
             font-weight: 600;
             box-shadow: 0 2px 4px rgba(0,0,0,0.04);
             border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        /* --- MBTI 診断案内カード --- */
+        .mbti-test-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 1px solid #c7d2fe;
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .mbti-test-text {
+            font-size: 0.92rem;
+            color: #3730a3;
+            font-weight: 700;
+        }
+        .mbti-test-sub {
+            font-size: 0.8rem;
+            color: #4338ca;
+            font-weight: 500;
+        }
+        .mbti-test-btn {
+            background: #4f46e5;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 10px 18px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .mbti-test-btn:hover {
+            background: #4338ca;
+            transform: translateY(-1px);
+        }
+
+        /* --- ドリンクバー案内カード --- */
+        .drink-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+        .drink-category-box {
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 14px;
+        }
+        .drink-cat-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #00897b;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .drink-list-text {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* --- モーダル (手元シート用) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-container {
+            background: #ffffff;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.25s ease;
+            padding: 24px;
+        }
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #666;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .modal-close-btn:hover {
+            background: #e0e0e0;
+        }
+        
+        /* モーダル内部デザイン */
+        .sheet-header {
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .sheet-badge {
+            display: inline-block;
+            background: #ff5252;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+        }
+        .sheet-title {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: #222;
+        }
+        .sheet-theme {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ff6b4a;
+            background: #fff5f2;
+            padding: 8px 12px;
+            border-radius: 10px;
+            margin-top: 8px;
+        }
+        
+        /* メンバー別カード */
+        .mbti-member-card {
+            background: #fbfbfb;
+            border: 1px solid #eee;
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        .mbti-member-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        .mbti-name {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        .mbti-type {
+            font-size: 0.82rem;
+            font-weight: 700;
+            background: #eef2ff;
+            color: #3f51b5;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+        .mbti-detail {
+            font-size: 0.88rem;
+            color: #555;
+            margin-bottom: 4px;
+        }
+        .mbti-detail strong {
+            color: #333;
+        }
+        
+        /* モーダル内リンクボタン */
+        .inline-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #4f46e5;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-top: 6px;
+            box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+            transition: background 0.2s;
+        }
+        .inline-link-btn:hover {
+            background: #4338ca;
+        }
+
+        /* トークヒントBOX */
+        .talk-hint-box {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-radius: 12px;
+            padding: 14px;
+            margin-top: 18px;
+            font-size: 0.88rem;
+        }
+        .talk-hint-title {
+            font-weight: 800;
+            color: #f57f17;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         /* 店内座席マップSVG */
@@ -301,6 +613,15 @@
             .card { padding: 16px; border-radius: 16px; }
             .header h1 { font-size: 1.35rem; }
             th, td { padding: 10px; font-size: 0.88rem; }
+            .modal-container { padding: 18px; }
+            .mbti-test-card { flex-direction: column; align-items: flex-start; }
+            .mbti-test-btn { width: 100%; justify-content: center; }
+            .map-btn-wrap { flex-direction: column; }
+            .map-btn { width: 100%; }
+            
+            /* スマホ表示時の2カラム調整 */
+            .media-layout { gap: 12px; }
+            .media-img-link { flex: 0 0 110px; max-width: 110px; }
         }
     </style>
 </head>
@@ -341,12 +662,65 @@
         </div>
     </section>
 
-    <!-- チーム編成 & 卓番 -->
+    <!-- 食べ放題 ＆ ドリンクバー案内 -->
     <section class="card">
-        <h2 class="section-title">グループ編成 & 卓番</h2>
+        <h2 class="section-title">🍽️ 食べ放題スタンダードコース ＆ ドリンクバー</h2>
+        
+        <!-- 左：表紙画像（リンク付き）、右：文章・ボタン -->
+        <div class="media-layout">
+            <a href="https://pisola.jp/west_menu" target="_blank" rel="noopener noreferrer" class="media-img-link" title="PISOLA公式メニューを見る">
+                <img src="https://pisola.jp/wp-pisola/wp-content/uploads/2026/09/free-1.jpg" alt="PISOLA 食べ放題 スタンダードコース" class="media-img">
+            </a>
+            <div class="media-body">
+                <p style="font-size: 0.9rem; color: #333; font-weight: 600; margin-bottom: 6px;">
+                    本日は<strong>食べ放題スタンダードコース（Free Food & Drink）</strong>をご用意しております。
+                </p>
+                <div class="course-note">
+                    💡 公式Webメニュー「2つ目のセクション：Free Food & Drink」のスタンダードコースが対象です
+                </div>
+                <div style="margin-top: 10px;">
+                    <a href="https://pisola.jp/west_menu" target="_blank" rel="noopener noreferrer" class="map-btn menu-btn" style="padding: 8px 18px; font-size: 0.85rem;">
+                        <span>📖 PISOLA公式メニューを開く</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ドリンクバー画像 -->
+        <img src="https://pisola.jp/wp-pisola/wp-content/uploads/2026/09/2609_drink-2.jpg" alt="PISOLA プレミアムドリンクバー" class="card-img">
+        
+        <p style="font-size: 0.9rem; color: #555; margin-bottom: 12px;">
+            PISOLA名物の果汁100%フレッシュジュースや本格カフェ・ハーブティー（35種類以上）もご自由にお楽しみいただけます。
+        </p>
+
+        <div class="drink-info-grid">
+            <div class="drink-category-box">
+                <div class="drink-cat-title">🥭 100%果汁ジュース・スープ</div>
+                <div class="drink-list-text">
+                    マンゴー、グァバ、白桃、オレンジ、ブドウ、アップル、日替わりスープなど
+                </div>
+            </div>
+            <div class="drink-category-box">
+                <div class="drink-cat-title">☕ 本格カフェ・抹茶ラテ</div>
+                <div class="drink-list-text">
+                    カプチーノ、カフェラテ、抹茶ラテ、ココア（厳選生乳使用）
+                </div>
+            </div>
+            <div class="drink-category-box">
+                <div class="drink-cat-title">🫖 17種の紅茶＆ハーブティー</div>
+                <div class="drink-list-text">
+                    ダージリン、アールグレイ、ジャスミン、カモミール、各種フルーツティーなど
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- チーム編成 & 卓番 (クリックでモーダル表示) -->
+    <section class="card">
+        <h2 class="section-title">👥 グループ編成 & 卓番（タップで手元シート表示）</h2>
         <div class="team-grid">
             <!-- 13卓 (パスタ) -->
-            <div class="team-card irietty">
+            <div class="team-card irietty" onclick="openSheet('irietty')">
                 <div class="team-header">
                     <div class="team-title-wrap">
                         <svg class="team-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -367,10 +741,11 @@
                     <span class="tag">菊嵜</span>
                     <span class="tag">斉木</span>
                 </div>
+                <div class="click-hint">📄 手元シートを見る ➔</div>
             </div>
 
             <!-- 17卓 (トロフィー) -->
-            <div class="team-card uemuran">
+            <div class="team-card uemuran" onclick="openSheet('uemuran')">
                 <div class="team-header">
                     <div class="team-title-wrap">
                         <svg class="team-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -393,10 +768,11 @@
                     <span class="tag">杉本</span>
                     <span class="tag">立花</span>
                 </div>
+                <div class="click-hint">📄 手元シートを見る ➔</div>
             </div>
 
             <!-- 51卓 (オリーブ) -->
-            <div class="team-card olive">
+            <div class="team-card olive" onclick="openSheet('olive')">
                 <div class="team-header">
                     <div class="team-title-wrap">
                         <svg class="team-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -421,9 +797,29 @@
                     <span class="tag">溝渕</span>
                     <span class="tag">松本</span>
                 </div>
+                <div class="click-hint">📄 手元シートを見る ➔</div>
             </div>
         </div>
+
+        <!-- MBTI診断テスト案内バナー -->
+        <div class="mbti-test-card">
+            <div>
+                <div class="mbti-test-text">🔮 自分のMBTI（性格タイプ）を調べる</div>
+                <div class="mbti-test-sub">まだ診断をしていない方は、こちらから約10分で無料でテストを受けられます！</div>
+            </div>
+            <a href="https://www.16personalities.com/ja/%E6%80%A7%E6%A0%BC%E8%A8%BA%E6%96%AD%E3%83%86%E3%82%B9%E3%83%88" target="_blank" rel="noopener noreferrer" class="mbti-test-btn">
+                <span>16Personalities で診断する ➔</span>
+            </a>
+        </div>
     </section>
+
+    <!-- モーダル本体 -->
+    <div class="modal-overlay" id="sheetModal" onclick="closeSheetOutside(event)">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="closeSheet()">✕</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
 
     <!-- 店内マップ -->
     <section class="card">
@@ -609,5 +1005,161 @@
         <p class="copyright">&copy; HOIKO COLLECTION All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript：モーダル表示制御ロジック -->
+    <script>
+        const sheetData = {
+            irietty: `
+                <div class="sheet-header">
+                    <span class="sheet-badge">13卓 手元シート</span>
+                    <h3 class="sheet-title">イリエッティ</h3>
+                    <div class="sheet-theme">🔥 卓のテーマ：ビジョンとアイデアが溢れる熱量あふれるテーブル</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">入江主任（リーダー）</span>
+                        <span class="mbti-type">INFJ-A / 提唱者</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 静かな情熱と深い洞察力の持ち主。人の本質や悩みを察知するのが得意。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> 「なぜそれをやるのか」という本質や理念を大切にする。</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">田野さん</span>
+                        <span class="mbti-type">ENFJ-A / 主人公</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 圧倒的な推進力と巻き込み力を持つムードメーカー。人を引き上げる天才。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> チーム全体のポジティブな目標や未来の話でテンションが上がる。</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">斉木さん</span>
+                        <span class="mbti-type">ENFP-A / 運動家</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 自由で柔軟な発想力とエネルギーを持つ起爆剤。ワクワクを創り出す。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> 新しい企画や面白いアイデアをどんどん広げるのが大好き。</div>
+                </div>
+                <div class="mbti-member-card" style="border: 2px dashed #81c784; background: #f4fbf7;">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">菊嵜さん</span>
+                        <span class="mbti-type" style="background:#e8f5e9; color:#2e7d32;">※タイプ未判明</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 今夜のキーマン！この3名の熱いトークをどう受け止めるかが見どころ。</div>
+                    <div style="margin-top: 8px;">
+                        <a href="https://www.16personalities.com/ja/%E6%80%A7%E6%A0%BC%E8%A8%BA%E6%96%AD%E3%83%86%E3%82%B9%E3%83%88" target="_blank" rel="noopener noreferrer" class="inline-link-btn">
+                            🔍 今すぐMBTI診断テストを受ける（無料）
+                        </a>
+                    </div>
+                </div>
+                <div class="talk-hint-box">
+                    <div class="talk-hint-title">💡 今夜のおすすめテーマ</div>
+                    「もし予算と時間が無限にあったら、事業部でどんな新しいサービスやイベントをやってみたい？」
+                </div>
+            `,
+            uemuran: `
+                <div class="sheet-header">
+                    <span class="sheet-badge">17卓 手元シート</span>
+                    <h3 class="sheet-title">ACウエムラン</h3>
+                    <div class="sheet-theme">⚖️ 卓のテーマ：多様性に富んだ、共感とロジックが融合するバランス抜群のテーブル</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">上村部長（リーダー）</span>
+                        <span class="mbti-type">INFP / 仲介者</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 温かい理念と人への深い共感を持つ見守り型リーダー。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> 個々の強みや想いを尊重し、穏やかな対話を好む。</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">中村さん</span>
+                        <span class="mbti-type">ISFJ-T / 擁護者</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 相手への細やかな気配りと、正確で手厚いサポートができる運用の要。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> 誰かの役に立っている実感や、確実な実務の整理で安心する。</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">佐藤さん</span>
+                        <span class="mbti-type">ENFP-T / 広報運動家</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 慎重さと親しみやすさを併せ持ち、場をふんわり明るくするアイデアマン。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> 新しい挑戦や共感できる話題で会話が広がる。</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">杉本さん</span>
+                        <span class="mbti-type">INTJ / 建築家</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 唯一の思考型（T）。全体を客観的・論理的に捉える頼れる分析家。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> 「効率」「仕組み」「数値的根拠」などロジックのある話を好む。</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">立花さん</span>
+                        <span class="mbti-type">ISFJ / 擁護者</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 安定感抜群のサポーター。チームの安心感を陰でしっかり支える。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> コツコツと丁寧に積み上げる仕事や、周囲との調和を大切にする。</div>
+                </div>
+                <div class="talk-hint-box">
+                    <div class="talk-hint-title">💡 今夜のおすすめテーマ</div>
+                    「仕事で『一番集中できる・テンションが上がる瞬間』と『実は苦手な瞬間』は？」
+                </div>
+            `,
+            olive: `
+                <div class="sheet-header">
+                    <span class="sheet-badge">51卓 手元シート</span>
+                    <h3 class="sheet-title">ナカホリーブ</h3>
+                    <div class="sheet-theme">🌿 卓のテーマ：心理的安全性が高く、居心地の良さとマイペースさが魅力のテーブル</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">中堀さん（リーダー）</span>
+                        <span class="mbti-type">ISFP / 冒険家</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 柔軟で独自の感性を持つ、チームのオアシス的存在。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> 押しつけのないリラックスした環境で実力を発揮する。</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">溝渕さん</span>
+                        <span class="mbti-type">ISFJ-T / 擁護者</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 謙虚で配慮深く、周囲の動きをよく見ている優しいサポーター。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> 困っている人を助けたり、日常の安心・安全な運用を重視する。</div>
+                </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">松本さん</span>
+                        <span class="mbti-type">ENFP-A / 運動家</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> ポジティブでアイデア豊富なムードメーカー。場に明るい風を吹かせる。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> ノリ良くアイデアを出し合い、みんなで楽しむ雑談が得意。</div>
+                </div>
+                <div class="talk-hint-box">
+                    <div class="talk-hint-title">💡 今夜のおすすめテーマ</div>
+                    「最近あった『地味に嬉しかったこと』または『ほっとした瞬間』は？」
+                </div>
+            `
+        };
+
+        function openSheet(teamKey) {
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = sheetData[teamKey];
+            document.getElementById('sheetModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSheet() {
+            document.getElementById('sheetModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeSheetOutside(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeSheet();
+            }
+        }
+    </script>
 </body>
 </html>
