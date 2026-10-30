@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スタンダードコースWEBメニュー - PISOLA吹田江坂店 | ほいコレナビ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ほいコレナビ ブランドカラー＆アクセント */
+            --hoiko-orange: #ff6b4a;
+            --hoiko-orange-grad: linear-gradient(135deg, #ff7e5f 0%, #ff5252 100%);
+            --hoiko-bg: #fffbf7;
+            --hoiko-card-bg: #ffffff;
+            --hoiko-text: #333333;
+            --hoiko-subtext: #666666;
+            
+            /* アクセントカラー */
+            --teal-grad: linear-gradient(135deg, #26a69a 0%, #00897b 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--hoiko-bg);
+            color: var(--hoiko-text);
+            line-height: 1.6;
+            padding: 20px 12px 90px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: var(--hoiko-orange-grad);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(255, 82, 82, 0.25);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: "STANDARD ALL YOU CAN EAT";
+            position: absolute;
+            top: -10px;
+            right: -20px;
+            font-size: 2.2rem;
+            font-weight: 900;
+            opacity: 0.12;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .header-sub {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.25);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        /* 戻るボタン＆モバイルオーダー注意喚起 */
+        .top-nav {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            color: #ff5252;
+            border: 2px solid #ff5252;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .back-link:hover {
+            background: #ff5252;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* QRコード注文の特記バナー */
+        .qr-notice-card {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px stroke #ffb74d;
+            border-radius: 18px;
+            padding: 18px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 6px 16px rgba(255, 152, 0, 0.15);
+        }
+        .qr-icon {
+            font-size: 2.2rem;
+            flex-shrink: 0;
+            background: #ffffff;
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .qr-content h3 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #e65100;
+            margin-bottom: 4px;
+        }
+        .qr-content p {
+            font-size: 0.88rem;
+            color: #4e342e;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* カード汎用 */
+        .card {
+            background: var(--hoiko-card-bg);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ff5252;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px dashed #fce4ec;
+        }
+
+        /* サブカテゴリ見出し */
+        .sub-category {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #00897b;
+            background: #e0f2f1;
+            padding: 6px 14px;
+            border-radius: 8px;
+            margin: 16px 0 10px;
+            display: inline-block;
+        }
+
+        /* メニューグリッド */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+        }
+        .menu-item-card {
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .menu-item-card:hover {
+            transform: translateY(-2px);
+            border-color: #ff8a80;
+            background: #ffffff;
+        }
+        .menu-code {
+            font-size: 0.82rem;
+            font-weight: 900;
+            color: #ff5252;
+            background: #ffebee;
+            padding: 2px 8px;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+        .menu-name {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #333;
+            line-height: 1.35;
+        }
+
+        /* 補足ノート */
+        .menu-note-box {
+            background: #fbfbfb;
+            border-left: 4px solid #ff5252;
+            padding: 12px 16px;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 14px;
+        }
+
+        /* 固定ボトムバー (スマホ用戻るナビ) */
+        .fixed-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(0,0,0,0.08);
+            padding: 12px 16px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+        .bottom-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--hoiko-orange-grad);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 82, 82, 0.35);
+            width: 100%;
+            max-width: 480px;
+            transition: all 0.2s ease;
+        }
+        .bottom-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 82, 82, 0.45);
+        }
+
+        /* フッター */
+        .footer {
+            text-align: center;
+            padding: 20px 10px 15px;
+            margin-top: 10px;
+        }
+        .footer-logo {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .copyright {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 600px) {
+            body { padding: 12px 8px 85px; }
+            .card { padding: 16px; border-radius: 16px; }
+            .header h1 { font-size: 1.35rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .qr-notice-card { flex-direction: column; text-anchor: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 上部ナビゲーション -->
+    <div class="top-nav">
+        <a href="https://matsumoto0111.github.io/nightmeeting/night_meeting.html" class="back-link">
+            <span>◀ 夜MTG特設サイトに戻る</span>
+        </a>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-sub">PISOLA 吹田江坂店</div>
+        <h1>食べ放題 スタンダードコース<br>WEB注文メニューガイド</h1>
+    </header>
+
+    <!-- モバイルオーダーのご案内バナー -->
+    <div class="qr-notice-card">
+        <div class="qr-icon">📱</div>
+        <div class="qr-content">
+            <h3>ご注文は各テーブル設置のQRコードから！</h3>
+            <p>ご注文の際は、テーブルに設置された専用QRコードをお手元のスマートフォンで読み取り、モバイルオーダーにてご注文をお願いいたします。</p>
+        </div>
+    </div>
+
+    <!-- 冷製料理 -->
+    <section class="card">
+        <h2 class="section-title">🥗 冷製料理 (Cold Antipasto)</h2>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">3801</span>
+                <span class="menu-name">グリーンサラダ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3807</span>
+                <span class="menu-name">焼きたてチーズせんべい</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3810</span>
+                <span class="menu-name">ポテトサラダ トロっと半熟玉子とパンチェッタの香り</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3808</span>
+                <span class="menu-name">砂肝のペペロンチーノ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3834</span>
+                <span class="menu-name">貝柱ときゅうりのタルタル</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3832</span>
+                <span class="menu-name">スペイン産8ヶ月熟成生ハムとサラミの盛り合わせ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3833</span>
+                <span class="menu-name">フランス産 パテ・ド・カンパーニュ</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 温製料理 -->
+    <section class="card">
+        <h2 class="section-title">🍳 温製料理 (Hot Antipasto & Fritto)</h2>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">3830</span>
+                <span class="menu-name">ハーブソーセージ (1本)</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3831</span>
+                <span class="menu-name">季節のソーセージ (1本)</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3814</span>
+                <span class="menu-name">ハーブフライドチキン 自家製タルタルとバルサミコソース (4個)</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3840</span>
+                <span class="menu-name">仔羊の串焼き ローズマリーソルト添え (2本)</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3839</span>
+                <span class="menu-name">仔羊タンの串焼き ローズマリーソルト添え (2本)</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3827</span>
+                <span class="menu-name">イカのフリット</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3819</span>
+                <span class="menu-name">プレーンバゲット</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3811</span>
+                <span class="menu-name">ポテトフライ トリュフディップ添え</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">3825</span>
+                <span class="menu-name">モッツァレラとズッキーニのフリット</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 窯焼きピッツァ -->
+    <section class="card">
+        <h2 class="section-title">🍕 窯焼きピッツァ (Pizza)</h2>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">2701</span>
+                <span class="menu-name">マルゲリータ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">2702</span>
+                <span class="menu-name">燻製ソーセージとコーンマヨ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">2703</span>
+                <span class="menu-name">ベーコンとサラミ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">2704</span>
+                <span class="menu-name">じゃがマヨコーンクリーム</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">2710</span>
+                <span class="menu-name">マリナーラ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">2713</span>
+                <span class="menu-name">ハーブソーセージとルッコラ</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 国産ブレンド米リゾット -->
+    <section class="card">
+        <h2 class="section-title">🍚 国産ブレンド米リゾット (Risotto)</h2>
+        
+        <div class="sub-category">ミートソース</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">1541</span>
+                <span class="menu-name">ナスとモッツァレラのミートソース</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">1543</span>
+                <span class="menu-name">ベーコンとキノコのミートソース</span>
+            </div>
+        </div>
+
+        <div class="sub-category">トマトクリームソース</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">1551</span>
+                <span class="menu-name">若鶏とキノコ、ほうれん草のトマトクリームソース</span>
+            </div>
+        </div>
+
+        <div class="sub-category">和風ソース</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">1531</span>
+                <span class="menu-name">タコと博多明太子の和風ソース</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">1534</span>
+                <span class="menu-name">若鶏とキノコの柚子胡椒仕立ての和風ソース</span>
+            </div>
+        </div>
+
+        <div class="sub-category">オイル（ペペロンチーノ）</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">1511</span>
+                <span class="menu-name">ベーコンと彩り野菜のペペロンチーノ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">1512</span>
+                <span class="menu-name">生ハムとキノコ、アスパラの地中海仕立てのペペロンチーノ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">1519</span>
+                <span class="menu-name">アサリとキノコ、ほうれん草のペペロンチーノ</span>
+            </div>
+        </div>
+
+        <div class="sub-category">クリームソース</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">1501</span>
+                <span class="menu-name">明太子カルボナーラ</span>
+            </div>
+        </div>
+
+        <div class="sub-category">トマトソース</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">1523</span>
+                <span class="menu-name">ベーコンとキノコ、ナスのアラビアータ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">1524</span>
+                <span class="menu-name">ナスとベーコン、モッツァレラのトマトソース</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 生パスタ -->
+    <section class="card">
+        <h2 class="section-title">🍝 生パスタ (Fresh Pasta)</h2>
+
+        <div class="sub-category">オイル (OIL)</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">511</span>
+                <span class="menu-name">ベーコンと彩り野菜のペペロンチーノ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">512</span>
+                <span class="menu-name">生ハムとキノコ、アスパラの地中海仕立てのペペロンチーノ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">513</span>
+                <span class="menu-name">ボンゴレビアンコ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">517</span>
+                <span class="menu-name">アサリとキノコ、ほうれん草のペペロンチーノ</span>
+            </div>
+        </div>
+
+        <div class="sub-category">クリーム (CREAM)</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">501</span>
+                <span class="menu-name">カルボナーラ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">503</span>
+                <span class="menu-name">明太子カルボナーラ</span>
+            </div>
+        </div>
+
+        <div class="sub-category">和風 (JAPANESE TASTE)</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">531</span>
+                <span class="menu-name">タコと博多明太子の和風ソース</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">534</span>
+                <span class="menu-name">若鶏とキノコの柚子胡椒仕立ての和風ソース</span>
+            </div>
+        </div>
+
+        <div class="sub-category">トマトクリーム (TOMATO CREAM)</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">551</span>
+                <span class="menu-name">若鶏とキノコ、ほうれん草のトマトクリームソース</span>
+            </div>
+        </div>
+
+        <div class="sub-category">トマト (TOMATO)</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">523</span>
+                <span class="menu-name">ベーコンとキノコ、ナスのアラビアータ</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">524</span>
+                <span class="menu-name">アサリのトマトソース</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">525</span>
+                <span class="menu-name">ナスとベーコン、モッツァレラのトマトソース</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">528</span>
+                <span class="menu-name">イカスミソース</span>
+            </div>
+        </div>
+
+        <div class="sub-category">ミートソース (MEAT)</div>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">541</span>
+                <span class="menu-name">ナスとモッツァレラのミートソース</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">543</span>
+                <span class="menu-name">ベーコンとキノコのミートソース</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ドルチェ -->
+    <section class="card">
+        <h2 class="section-title">🍨 ドルチェ (Dolce)</h2>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <span class="menu-code">5291</span>
+                <span class="menu-name">バニラアイス</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">5292</span>
+                <span class="menu-name">エスプレッソアイス</span>
+            </div>
+            <div class="menu-item-card">
+                <span class="menu-code">5293</span>
+                <span class="menu-name">チョコアイス</span>
+            </div>
+        </div>
+           </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <img src="https://hoikucollection.jp/infomation/wp-content/uploads/2019/02/5fa8d7cdbc6e7052e84a871b680e6ae4.jpg" alt="ほいコレ" class="footer-logo">
+        <p class="copyright">&copy; HOIKO COLLECTION All Rights Reserved.</p>
+    </footer>
+
+    <!-- 固定ボトムバー (特設サイトへ戻る) -->
+    <div class="fixed-bottom-bar">
+        <a href="https://matsumoto0111.github.io/nightmeeting/night_meeting.html" class="bottom-btn">
+            <span>🔙 夜MTG特設サイトに戻る</span>
+        </a>
+    </div>
+
+</body>
+</html>
