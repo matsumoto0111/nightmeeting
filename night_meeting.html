@@ -23,9 +23,6 @@
 
             --team-uemuran-bg: #fffde7;
             --team-uemuran-border: #ffd54f;
-
-            --team-olive-bg: #e0f7fa;
-            --team-olive-border: #4dd0e1;
         }
 
         * {
@@ -213,7 +210,7 @@
         /* チームグリッド & カードアニメーション */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 16px;
         }
         .team-card {
@@ -242,7 +239,6 @@
 
         .team-card.irietty { background: var(--team-irietty-bg); border-color: var(--team-irietty-border); }
         .team-card.uemuran { background: var(--team-uemuran-bg); border-color: var(--team-uemuran-border); }
-        .team-card.olive   { background: var(--team-olive-bg);   border-color: var(--team-olive-border); }
 
         .team-header {
             display: flex;
@@ -489,26 +485,6 @@
         .mbti-detail strong {
             color: #333;
         }
-        
-        /* モーダル内リンクボタン */
-        .inline-link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: #4f46e5;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 20px;
-            margin-top: 6px;
-            box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
-            transition: background 0.2s;
-        }
-        .inline-link-btn:hover {
-            background: #4338ca;
-        }
 
         /* トークヒントBOX */
         .talk-hint-box {
@@ -629,7 +605,7 @@
     <!-- ヘッダー -->
     <header class="header">
         <div class="header-sub">ほいコレ事業部 夜MTG</div>
-        <h1>10/30(金) PISOLA 吹田江坂店<br>夜ミーティングのご案内</h1>
+        <h1>10/30(金) PISOLA 吹田江坂店<br>懇親ミーティングのご案内</h1>
     </header>
 
     <!-- 会場・日時案内 -->
@@ -715,7 +691,7 @@
     <section class="card">
         <h2 class="section-title">👥 グループ編成 & 卓番（タップで手元シート表示）</h2>
         <div class="team-grid">
-            <!-- 13卓 (パスタ) -->
+            <!-- 13卓 (4名席) -->
             <div class="team-card irietty" onclick="openSheet('irietty')">
                 <div class="team-header">
                     <div class="team-title-wrap">
@@ -727,7 +703,7 @@
                             <path d="M25 26 Q 34 20 42 27" stroke="#F57C00" stroke-width="3" stroke-linecap="round" fill="none"/>
                             <path d="M42 12 L42 22 M45 12 L45 22 M39 12 L39 22 M39 22 Q 42 26 45 22 M42 24 L42 45" stroke="#78909C" stroke-width="2.2" stroke-linecap="round"/>
                         </svg>
-                        <span class="team-name">イリエッティ</span>
+                        <span class="team-name">イリエッティ（4名席）</span>
                     </div>
                     <span class="table-badge">13卓</span>
                 </div>
@@ -735,11 +711,12 @@
                 <div class="member-tags">
                     <span class="tag">田野</span>
                     <span class="tag">斉木</span>
+                    <span class="tag">中堀</span>
                 </div>
                 <div class="click-hint">📄 手元シートを見る ➔</div>
             </div>
 
-            <!-- 17卓 (トロフィー) -->
+            <!-- 17卓 (6名席) -->
             <div class="team-card uemuran" onclick="openSheet('uemuran')">
                 <div class="team-header">
                     <div class="team-title-wrap">
@@ -752,7 +729,7 @@
                             <rect x="22" y="52" width="20" height="6" rx="2" fill="#795548"/>
                             <path d="M32 21 L33.8 25.5 L38.5 25.5 L34.7 28.3 L36.2 33 L32 30 L27.8 33 L29.3 28.3 L25.5 25.5 L30.2 25.5 Z" fill="#FFF"/>
                         </svg>
-                        <span class="team-name">ACナカムラン</span>
+                        <span class="team-name">ACナカムラン（6名席）</span>
                     </div>
                     <span class="table-badge">17卓</span>
                 </div>
@@ -761,33 +738,6 @@
                     <span class="tag">佐藤</span>
                     <span class="tag">杉本</span>
                     <span class="tag">立花</span>
-                </div>
-                <div class="click-hint">📄 手元シートを見る ➔</div>
-            </div>
-
-            <!-- 51卓 (オリーブ) -->
-            <div class="team-card olive" onclick="openSheet('olive')">
-                <div class="team-header">
-                    <div class="team-title-wrap">
-                        <svg class="team-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="32" cy="32" r="30" fill="#E0F2F1"/>
-                            <!-- オリーブの実1 -->
-                            <ellipse cx="25" cy="37" rx="9" ry="13" transform="rotate(-15 25 37)" fill="#558B2F"/>
-                            <ellipse cx="23" cy="33" rx="3" ry="6" transform="rotate(-15 23 33)" fill="#9CCC65" opacity="0.7"/>
-                            <!-- オリーブの実2 -->
-                            <ellipse cx="39" cy="39" rx="8" ry="11" transform="rotate(20 39 39)" fill="#33691E"/>
-                            <ellipse cx="37" cy="36" rx="2.5" ry="5" transform="rotate(20 37 36)" fill="#8BC34A" opacity="0.7"/>
-                            <!-- 枝と葉っぱ -->
-                            <path d="M16 20 C 26 24, 34 26, 46 22" stroke="#4E342E" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M28 23 C 24 13, 34 11, 36 21 Z" fill="#689F38"/>
-                            <path d="M38 23 C 40 14, 50 15, 46 23 Z" fill="#689F38"/>
-                        </svg>
-                        <span class="team-name">ナカホリーブ</span>
-                    </div>
-                    <span class="table-badge">51卓</span>
-                </div>
-                <div class="team-leader">リーダー：中堀</div>
-                <div class="member-tags">
                     <span class="tag">溝渕</span>
                     <span class="tag">松本</span>
                 </div>
@@ -841,12 +791,10 @@
                 <!-- 店内全体外枠 -->
                 <rect x="50" y="75" width="500" height="740" fill="none" stroke="#222" stroke-width="2.5"/>
 
-                <!-- 1列目 (51番卓エリア) -->
+                <!-- 1列目 (エリア) -->
                 <line x1="110" y1="75" x2="110" y2="740" stroke="#222" stroke-width="1.5"/>
                 <line x1="50" y1="360" x2="110" y2="360" stroke="#222" stroke-width="1.5"/>
                 <line x1="50" y1="450" x2="110" y2="450" stroke="#222" stroke-width="1.5"/>
-                <circle cx="80" cy="405" r="19" fill="#fff" stroke="#ff5252" stroke-width="2.5"/>
-                <text x="80" y="412" font-size="18" font-weight="900" fill="#ff5252" text-anchor="middle">51</text>
 
                 <!-- 左通路 (x: 110~200) -->
                 <line x1="200" y1="75" x2="200" y2="740" stroke="#222" stroke-width="1.5"/>
@@ -937,7 +885,7 @@
                 <tbody>
                     <!-- 13卓 -->
                     <tr>
-                        <td class="tbl-no" rowspan="2">13卓</td>
+                        <td class="tbl-no" rowspan="4">13卓</td>
                         <td class="person-name">入江主任</td>
                         <td class="menu-item">仔羊の串焼き</td>
                     </tr>
@@ -945,10 +893,18 @@
                         <td class="person-name">田野さん</td>
                         <td class="menu-item">砂肝のペペロンチーノ</td>
                     </tr>
+                    <tr>
+                        <td class="person-name">菊嵜さん</td>
+                        <td class="menu-item">窯焼きピザ：マルゲリータ</td>
+                    </tr>
+                    <tr>
+                        <td class="person-name">中堀さん</td>
+                        <td class="menu-item">明太子カルボナーラリゾット</td>
+                    </tr>
 
                     <!-- 17卓 -->
                     <tr>
-                        <td class="tbl-no" rowspan="4">17卓</td>
+                        <td class="tbl-no" rowspan="6">17卓</td>
                         <td class="person-name">佐藤さん</td>
                         <td class="menu-item">532ずわい蟹と海老の和風ソース、3840仔羊の串焼きローズマリーソルト添え（2本）</td>
                     </tr>
@@ -963,13 +919,6 @@
                     <tr>
                         <td class="person-name">中村さん</td>
                         <td class="menu-item">3801グリーンサラダ・3832生ハムサラミ</td>
-                    </tr>
-
-                    <!-- 51卓 -->
-                    <tr>
-                        <td class="tbl-no" rowspan="3">51卓</td>
-                        <td class="person-name">中堀さん</td>
-                        <td class="menu-item">明太子カルボナーラリゾット</td>
                     </tr>
                     <tr>
                         <td class="person-name">溝渕さん</td>
@@ -996,7 +945,7 @@
             irietty: `
                 <div class="sheet-header">
                     <span class="sheet-badge">13卓 手元シート</span>
-                    <h3 class="sheet-title">イリエッティ</h3>
+                    <h3 class="sheet-title">イリエッティ（4名席）</h3>
                     <div class="sheet-theme">🔥 卓のテーマ：ブレーキなしのフルスロットル！ワクワクと夢をカタチにする未来構想卓</div>
                 </div>
                 <div class="mbti-member-card">
@@ -1023,6 +972,14 @@
                     <div class="mbti-detail"><strong>特徴：</strong> 自由で柔軟な発想力とエネルギーを持つ起爆剤。ワクワクを創り出す。</div>
                     <div class="mbti-detail"><strong>トーク傾向：</strong> 新しい企画や面白いアイデアをどんどん広げるのが大好き。</div>
                 </div>
+                <div class="mbti-member-card">
+                    <div class="mbti-member-header">
+                        <span class="mbti-name">中堀さん</span>
+                        <span class="mbti-type">ISFP / 冒険家</span>
+                    </div>
+                    <div class="mbti-detail"><strong>特徴：</strong> 柔軟で独自の感性を持つオアシス的存在。マイペースな空気感でチームを和ませる。</div>
+                    <div class="mbti-detail"><strong>トーク傾向：</strong> 押しつけのないリラックスした環境で才能を発揮する。</div>
+                </div>
                 <div class="talk-hint-box">
                     <div class="talk-hint-title">💡 今夜のおすすめテーマ</div>
                     「もし予算と時間が無限にあったら、事業部でどんな新しいサービスやイベントをやってみたい？」
@@ -1031,12 +988,12 @@
             uemuran: `
                 <div class="sheet-header">
                     <span class="sheet-badge">17卓 手元シート</span>
-                    <h3 class="sheet-title">ACナカムラン</h3>
-                    <div class="sheet-theme">⚖️ 卓のテーマ：確かなサポート力と新しい視点が交差する、安定感あふれるテーブル</div>
+                    <h3 class="sheet-title">ACナカムラン（6名席）</h3>
+                    <div class="sheet-theme">⚖️ 卓のテーマ：確かなサポート力と賑やかな熱量が交差する、大賑わいテーブル</div>
                 </div>
                 <div class="mbti-member-card">
                     <div class="mbti-member-header">
-                        <span class="mbti-name">中村さん</span>
+                        <span class="mbti-name">中村さん（リーダー）</span>
                         <span class="mbti-type">ISFJ-T / 擁護者</span>
                     </div>
                     <div class="mbti-detail"><strong>特徴：</strong> 相手への細やかな気配りと、正確で手厚いサポートができる運用の要。</div>
@@ -1066,25 +1023,6 @@
                     <div class="mbti-detail"><strong>特徴：</strong> 安定感抜群のサポーター。チームの安心感を陰でしっかり支える。</div>
                     <div class="mbti-detail"><strong>トーク傾向：</strong> コツコツと丁寧に積み上げる仕事や、周囲との調和を大切にする。</div>
                 </div>
-                <div class="talk-hint-box">
-                    <div class="talk-hint-title">💡 今夜のおすすめテーマ</div>
-                    「自分がチームで『これなら任せて！』と思う得意分野（または隠れたこだわり）は？」
-                </div>
-            `,
-            olive: `
-                <div class="sheet-header">
-                    <span class="sheet-badge">51卓 手元シート</span>
-                    <h3 class="sheet-title">ナカホリーブ</h3>
-                    <div class="sheet-theme">🌿 卓のテーマ：心理的安全性が高く、居心地の良さとマイペースさが魅力のテーブル</div>
-                </div>
-                <div class="mbti-member-card">
-                    <div class="mbti-member-header">
-                        <span class="mbti-name">中堀さん（リーダー）</span>
-                        <span class="mbti-type">ISFP / 冒険家</span>
-                    </div>
-                    <div class="mbti-detail"><strong>特徴：</strong> 柔軟で独自の感性を持つ、チームのオアシス的存在。</div>
-                    <div class="mbti-detail"><strong>トーク傾向：</strong> 押しつけのないリラックスした環境で実力を発揮する。</div>
-                </div>
                 <div class="mbti-member-card">
                     <div class="mbti-member-header">
                         <span class="mbti-name">溝渕さん</span>
@@ -1103,7 +1041,7 @@
                 </div>
                 <div class="talk-hint-box">
                     <div class="talk-hint-title">💡 今夜のおすすめテーマ</div>
-                    「最近あった『地味に嬉しかったこと』または『ほっとした瞬間』は？」
+                    「自分がチームで『これなら任せて！』と思う得意分野や、最近ほっとした瞬間は？」
                 </div>
             `
         };
